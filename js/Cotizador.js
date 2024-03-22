@@ -8,32 +8,32 @@ function confirmacionEdad() {
     const costosSeguro = {
         autos: {
             basica: {
-                audi: {2000: 8000, 2010: 10000, 2020: 12000},
-                chevrolet: {2000: 7000, 2010: 9000, 2020: 11000}
+                audi: {minimo: 8000, medio: 10000, maximo: 12000},
+                chevrolet: {minimo: 7000, medio: 9000, maximo: 11000}
             },
             premium: {
-                audi: {2000: 12000, 2010: 14000, 2020: 16000},
-                chevrolet: {2000: 11000, 2010: 13000, 2020: 15000}
+                audi: {minimo: 12000, medio: 14000, maximo: 16000},
+                chevrolet: {minimo: 11000, medio: 13000, maximo: 15000}
             }
         },
         motocicletas: {
             basica: {
-                honda: {2000: 4000, 2010: 6000, 2020: 8000},
-                ducati: {2000: 3000, 2010: 5000, 2020: 7000}
+                honda: {minimo: 4000, medio: 6000, maximo: 8000},
+                ducati: {minimo: 3000, medio: 5000, maximo: 7000}
             },
             premium: {
-                honda: {2000: 6000, 2010: 8000, 2020: 10000},
-                ducati: {2000: 5000, 2010: 7000, 2020: 9000}
+                honda: {minimo: 6000, medio: 8000, maximo: 10000},
+                ducati: {minimo: 5000, medio: 7000, maximo: 9000}
             }
         },
         camiones: {
             basica: {
-                scania: {2000: 14000, 2010: 18000, 2020: 22000},
-                volvo: {2000: 12000, 2010: 16000, 2020: 20000}
+                scania: {minimo: 14000, medio: 18000, maximo: 22000},
+                volvo: {minimo: 12000, medio: 16000, maximo: 20000}
             },
             premium: {
-                scania: {2000: 20000, 2010: 24000, 2020: 28000},
-                volvo: {2000: 18000, 2010: 22000, 2020: 26000}
+                scania: {minimo: 20000, medio: 24000, maximo: 28000},
+                volvo: {minimo: 18000, medio: 22000, maximo: 26000}
             }
         }
     };
@@ -58,17 +58,35 @@ function confirmacionEdad() {
         marca = prompt("Ingrese la marca de su vehículo:");
         marca = marca.toLowerCase();
 
-        age = prompt("¿Qué año es su vehículo?");
-        tipoCobertura = prompt("¿Qué cobertura desea? Básica o Premium?");
-        tipoCobertura = tipoCobertura.toLowerCase();
-
         if (marcas.includes(marca)) {
-            const costo = costosSeguro[tipoVehiculo][tipoCobertura][marca][age];
+            age = prompt("¿Qué año es su vehículo?");
+            age=parseInt(age)
+            tipoCobertura = prompt("¿Qué cobertura desea? Básica o Premium?");
+            tipoCobertura = tipoCobertura.toLowerCase();
+
+            let costo = costosSeguro[tipoVehiculo][tipoCobertura][marca];
             if (!costo) {
                 alert("No se encontró información de costo para el año ingresado.");
-            } else {
-                alert("Estimado " + nombreYapellido + ", el costo mensual de la cobertura " + tipoCobertura + " para su " + tipoVehiculo + " marca " + marca + " año " + age + " es de $ " + costo);
-            }
+            } else {                
+                switch (true) {
+                    case (age<=2000 && age>=1995):
+                        costo = costosSeguro[tipoVehiculo][tipoCobertura][marca]["minimo"];
+                        alert("Estimado " + nombreYapellido + ", el costo mensual de la cobertura " + tipoCobertura + " para su " + tipoVehiculo + " marca " + marca + " año " + age + " es de $ " + costo)
+                    break;
+                    case (2001<=age && age <=2011):
+                        costo = costosSeguro[tipoVehiculo][tipoCobertura][marca]["medio"];
+                        alert("Estimado " + nombreYapellido + ", el costo mensual de la cobertura " + tipoCobertura + " para su " + tipoVehiculo + " marca " + marca + " año " + age + " es de $ " + costo )
+                    break;
+                    case (age>=2012 && age <=2024):
+                        costo = costosSeguro[tipoVehiculo][tipoCobertura][marca]["maximo"];
+                        alert("Estimado " + nombreYapellido + ", el costo mensual de la cobertura " + tipoCobertura + " para su " + tipoVehiculo + " marca " + marca + " año " + age + " es de $ " + costo)
+                    break;
+                    default:
+                      alert("Lo lamentamos, por el momento no disponemos de una cobertura para su vehiculo");
+                      break;
+                  }         
+        }
+            
         } else {
             alert("La marca ingresada no es válida.");
         }
