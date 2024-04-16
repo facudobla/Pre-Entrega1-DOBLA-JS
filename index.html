@@ -4,9 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cotizador DF BROKER</title>
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
+        <header>
+            <div class="titulo1">
+                <h1> DF Broker | Cotizador Online</h1>
+            </div>
+        </header>
+        <div class="container">
+            <div class="titulo2">
+                <h2>Bienvenido al Cotizador Online de DF Broker!</h2>
+                <p>A continuacion podras seleccionar marca, año y el tipo de cobertura que desea para su vehiculo.</p>
+            </div>
+            <form id="formulario_cotizacion" class="formulario">
+                <p>Que marca es tu vehiculo?</p>
+                <input type="text" id="texto">
+                <p>Ingresa el Año o modelo</p>
+                <input type="number" id="numero">
+                <p>Cobertura Basica</p>
+                <input type="radio" value="basico" id="basico" class="radio">
+                <p>Cobertura Completa</p><input type="radio" value="completo" id="completo" class="radio">
 
+
+                <input type="submit" value="Cotizar" class="btncotizar">
+            </form>
+            <div id="msj_alerta" class="resultado"> 
+                <h1>NO SE INGRESARON VALORES</h1>
+            </div>
+           
+            <!-- <div class="formulario">
+                <form id="formulario_cotizacion">
+                    <div class="campos">
+                        <label>Marca</label>
+                        <select name="marca" id="marca">
+                            <option value="">---Seleccione la marca de su vehiculo---</option>
+                            <option value="Audi">Audi</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                        </select>
+                    </div>
+
+                    <div class="campos">
+                        <label>Año</label>
+                        <select name="year" id="anio">
+                            <option value="">Seleccione el año de tu vehiculo</option>
+                            <option value="1995">1995</option>
+                            <option value="1996">1996</option>
+                            <option value="1997">1997</option>
+                            <option value="1998">1998</option>
+                            <option value="1999">1999</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <option value="2003">2003</option>
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+
+                    <div class="campos">
+                        <label for="">Plan</label>
+                        <input 
+                        type="radio"
+                        name="plan"
+                        value="basico"
+                        class="radio"
+                        id="basico"
+                        >basico
+                        <input 
+                        type="radio"
+                        name="plan"
+                        value="completo"
+                        class="radio"
+                        id="completo"
+                        >Completo
+                    </div>
+                </form>
+            </div>
+            <input type="submit" value="Cotizar"> -->
+    </div>
 
     <script src="./js/Cotizador.js"></script>
 </body>
