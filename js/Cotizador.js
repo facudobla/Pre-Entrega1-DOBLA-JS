@@ -1,15 +1,27 @@
 // Objeto 
-let Objeto = [
+let datos_usuario = [
     {
-        id:1,
-        nombre:"Raul"
+        id: 1,
+        nombre: "Raul"
     },
     {
-        id:2,
-        nombre: "Roberto"
+        id: 2,
+        nombre: "Ricardo"
     }
 
 ]
+let objeto = {
+    id: 3,
+    nombre: "William"
+}
+datos_usuario.push(objeto)
+
+for( const usuario of datos_usuario){
+    console.log(usuario.nombre)
+}
+
+console.log(JSON.stringify(datos_usuario))
+
 
 
 
@@ -24,23 +36,77 @@ formulario_cotizacion.addEventListener ("submit", funcionEjemplo)
 
 function funcionEjemplo(e) {
     e.preventDefault();
-    console.log ("Se ha enviado el formulario correctamente")
     let formulario = e.target;
-    console.log (formulario.children[0].value)
-    console.log (document.getElementById ("numero").value)
-    console.log (formulario.texto.value)
-    console.log (formulario.basico.value)
-    console.log (formulario.completo.value)
-    let texto= formulario.texto.value;
-    let numero= formulario.numero.value;
-    let basico= formulario.basico.value
-    let completo= formulario.completo.value
-    msj_alerta.innerHTML=`<h1> El valor del plan ${basico||completo} para tu ${texto} modelo ${numero} es de $19.500 </h1>`
+    // console.log (formulario.children[0].value)
+    // console.log (document.getElementById ("numero").value)
+    // console.log (formulario.texto.value)
+    // console.log (formulario.basico.value)
+    // console.log (formulario.completo.value)
+    // let texto= formulario.texto.value;
+    // let numero= formulario.numero.value;
+    // let basico= formulario.basico.value
+    // let completo= formulario.completo.value
+    let marca= formulario.marca.value
+    let anio= formulario.anio.value
+    let categoria= formulario.categoria.value
+    let plan= formulario.plan.value
+    console.log (marca)
+    console.log (categoria)
+    console.log (anio)
+    console.log (plan)
 
-    localStorage.setItem("texto", texto)
-    localStorage.setItem("numero", numero)
-    localStorage.setItem("miprimerjson", JSON.stringify(Objeto))
+    // msj_alerta.innerHTML=`<h1> El valor del plan para tu ${marca} modelo ${anio} es de $19.500 </h1>`
+
+    let costo = costosSeguro[categoria][plan][marca];
+    let form_ok = false;
+    if (!costo) {
+        msj_alerta.innerHTML=`<h1> No se encontro el vehiculo solicitado</h1>`
+    } else {                
+        switch (true) {
+            case (anio<=2000 && anio>=1995):
+                costo = costosSeguro[categoria][plan][marca]["minimo"]
+                form_ok=true
+            break;
+            case (2001<=anio && anio <=2011):
+                costo = costosSeguro[categoria][plan][marca]["medio"];
+                form_ok=true
+            break;
+            case (anio>=2012 && anio <=2024):
+                costo = costosSeguro[categoria][plan][marca]["maximo"];
+                form_ok=true
+            break;
+            default:
+                msj_alerta.innerHTML=`<h1> No tenemos coberturas disponibles para tu vehiculo </h1>`
+                break;
+            }         
+
+    }
+if (form_ok== true) {
+    setTimeout(()=>{
+        resultadoCotizacion;
+     },1500);
+    formulario_cotizacion.style.display="none";
+    // titulo2.style.display="none"
+    let resultadoCotizacion= msj_alerta.innerHTML= `<h1>El valor del plan para tu ${marca} modelo ${anio} es de $${costo} </h1>`;
+    let objeto_form= {
+       categoria: categoria,
+       marca: marca,
+       modelo: anio,
+       plan: plan,
+    }
+    console.log(JSON.stringify(objeto_form))
+
+
 }
+
+else {
+    msj_alerta.style.color="red";
+    
+}
+
+
+}   
+
 
 
 
@@ -110,7 +176,7 @@ function funcionEjemplo(e) {
 //             tipoCobertura = prompt("¿Qué cobertura desea? Básica o Premium?");
 //             tipoCobertura = tipoCobertura.toLowerCase();
 
-//             let costo = costosSeguro[tipoVehiculo][tipoCobertura][marca];
+//             let costo = costosSeguro[tipoVehiculo][marca][tipoCobertura];
 //             if (!costo) {
 //                 alert("No se encontró información de costo para el año ingresado.");
 //             } else {                

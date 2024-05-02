@@ -12,25 +12,29 @@
                 <h1> DF Broker | Cotizador Online</h1>
             </div>
         </header>
-        <div class="container">
+        <div class="container" id="divbase">
             <div class="titulo2">
-                <h2>Bienvenido al Cotizador Online de DF Broker!</h2>
-                <p>A continuacion podras seleccionar marca, año y el tipo de cobertura que desea para su vehiculo.</p>
+                <h2>Bienvenido al cotizador online de DF Broker!</h2>
+                <p>A continuacion podras seleccionar tipo de vehiculo, marca, año y el alcance de cobertura que desea para su vehiculo.</p>
             </div>
             <form id="formulario_cotizacion" class="formulario">
-                <p>Que marca es tu vehiculo?</p>
-                <input type="text" id="texto">
-                <p>Ingresa el Año o modelo</p>
-                <input type="number" id="numero">
-                <p>Cobertura Basica</p>
-                <input type="radio" value="basico" id="basico" class="radio">
-                <p>Cobertura Completa</p><input type="radio" value="completo" id="completo" class="radio">
-
+                <p class="letrapreguntas">Que tipo de vehiculo?</p>
+                <input type="text" id="categoria">
+                <p class="letrapreguntas">Que marca es tu vehiculo?</p>
+                <input type="text" id="marca">
+                <p class="letrapreguntas">Ingresa el Año o modelo</p>
+                <input type="number" id="anio">
+                <p class="letrapreguntas">Que tipo de cobertura?</p>
+                <div class="tipocobertura">
+                    <p class="letracobertura">Basica</p>
+                    <input type="radio" value="basico" id="basico" name="plan">
+                    <p class="letracobertura">Completa</p>
+                    <input type="radio" value="completo" id="completo" name="plan" checked>
+                </div>
 
                 <input type="submit" value="Cotizar" class="btncotizar">
             </form>
             <div id="msj_alerta" class="resultado"> 
-                <h1>NO SE INGRESARON VALORES</h1>
             </div>
            
             <!-- <div class="formulario">
@@ -103,6 +107,9 @@
             <input type="submit" value="Cotizar"> -->
     </div>
 
+    <script src="./js/CostoSeguro.js"></script>
     <script src="./js/Cotizador.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </body>
 </html>

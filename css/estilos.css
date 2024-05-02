@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #85929E ;
+    background-color: #636b72 ;
     height: 100vh;
 }
 
@@ -14,27 +14,56 @@ body{
     width: 400px;
     background: white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
 }
+
 
 .titulo1{
     text-align: center;
     padding: 10px;
     background-color: rgb(9, 75, 255);
     height: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .titulo2{
     text-align: center;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.tipocobertura{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     
 }
 
 .resultado{
     text-align: center;
     margin-top: 500px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .btncotizar{
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 22px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    
+}
+
+.letrapreguntas{
+   font-style: inherit;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.letracobertura{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
